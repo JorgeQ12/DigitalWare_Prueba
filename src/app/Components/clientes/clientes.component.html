@@ -1,0 +1,38 @@
+<p class="TituloClientes"> Modulo Clientes</p>
+
+<dx-data-grid
+    id="dataGridClientes"
+    [dataSource]="listaClientes"
+    keyExpr="clientes_Id"
+    [columnAutoWidth]="true"    
+    [allowColumnResizing]="true"
+    [allowColumnReordering]="true"
+    (onRowInserted)="insertarCliente($event)"
+    (onRowUpdated)="actualizarCliente($event)"
+    (onRowRemoved)="deleteCliente($event)">
+
+    <dxi-column dataField="clientes_Nombre">
+        <dxi-validation-rule type="required"></dxi-validation-rule>
+    </dxi-column>
+    <dxi-column dataField="clientes_Identificacion">
+        <dxi-validation-rule type="required"></dxi-validation-rule>
+    </dxi-column>
+    <dxi-column dataField="clientes_Edad">
+        <dxi-validation-rule type="required"></dxi-validation-rule>
+    </dxi-column>
+
+    <dxo-selection mode="single"></dxo-selection>
+    <dxo-editing
+        mode="popup"
+        [allowUpdating]="true"
+        [allowDeleting]="true"
+        [allowAdding]="true">
+    </dxo-editing>
+    <dxo-summary>
+      <dxi-group-item
+        summaryType="count">
+      </dxi-group-item>
+    </dxo-summary>
+    <dxo-filter-row [visible]="true"></dxo-filter-row>
+    <dxo-search-panel [visible]="true"></dxo-search-panel>
+</dx-data-grid>

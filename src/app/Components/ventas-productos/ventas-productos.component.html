@@ -1,0 +1,41 @@
+<p class="TituloVentas"> Modulo Ventas</p>
+
+<dx-data-grid
+    id="dataGridProductos"
+    [dataSource]="listaVentaP"
+    keyExpr="ventasP_Id"
+    [columnAutoWidth]="true"    
+    [allowColumnResizing]="true"
+    [allowColumnReordering]="true"
+    (onRowInserted)="insertarVentaP($event)"
+    (onRowUpdated)="actualizarVentaP($event)"
+    (onRowRemoved)="deleteVentaP($event)">
+
+    <dxi-column dataField="ventasP_Nombre">
+        <dxi-validation-rule type="required"></dxi-validation-rule>
+    </dxi-column>
+    <dxi-column dataField="ventasP_Comprador">
+        <dxi-validation-rule type="required"></dxi-validation-rule>
+    </dxi-column>
+    <dxi-column dataField="ventasP_Cantidad">
+        <dxi-validation-rule type="required"></dxi-validation-rule>
+    </dxi-column>
+    <dxi-column dataField="ventasP_Fecha">
+        <dxi-validation-rule type="required"></dxi-validation-rule>
+    </dxi-column>
+
+    <dxo-selection mode="single"></dxo-selection>
+    <dxo-editing
+        mode="popup"
+        [allowUpdating]="true"
+        [allowDeleting]="true"
+        [allowAdding]="true">
+    </dxo-editing>
+    <dxo-summary>
+      <dxi-group-item
+        summaryType="count">
+      </dxi-group-item>
+    </dxo-summary>
+    <dxo-filter-row [visible]="true"></dxo-filter-row>
+    <dxo-search-panel [visible]="true"></dxo-search-panel>
+</dx-data-grid>

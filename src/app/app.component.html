@@ -1,0 +1,22 @@
+<div class="fondo">
+    <div style="margin-bottom: 4.5%;" >
+        <div class="toolbar" role="banner">
+            <p style="margin-left: 5%;">Digital Ware</p>
+        </div>
+    </div>
+    <div class="panelLateral">
+        <p>Elige el modulo:</p>
+        <dx-button text="Productos" (onClick)="moduloP()"></dx-button>
+        <dx-button text="Clientes" (onClick)="moduloC()"></dx-button>
+        <dx-button text="Ventas" (onClick)="moduloV()"></dx-button>
+    </div>
+    <div *ngIf="mClientes" class="moduloClientes">
+        <app-clientes></app-clientes>
+    </div>
+    <div *ngIf="mProductos" class="moduloProductos">
+        <app-productos></app-productos>
+    </div>
+    <div *ngIf="mVentas" class="moduloVentasP">
+        <app-ventas-productos></app-ventas-productos>
+    </div>
+</div>

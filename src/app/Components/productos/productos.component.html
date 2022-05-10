@@ -1,0 +1,38 @@
+<p class="TituloProductos"> Modulo Productos</p>
+
+<dx-data-grid
+    id="dataGridProductos"
+    [dataSource]="listaProducto"
+    keyExpr="producto_Id"
+    [columnAutoWidth]="true"    
+    [allowColumnResizing]="true"
+    [allowColumnReordering]="true"
+    (onRowInserted)="insertarProducto($event)"
+    (onRowUpdated)="actualizarProducto($event)"
+    (onRowRemoved)="deleteProducto($event)">
+
+    <dxi-column dataField="producto_Nombre">
+        <dxi-validation-rule type="required"></dxi-validation-rule>
+    </dxi-column>
+    <dxi-column dataField="producto_Precio">
+        <dxi-validation-rule type="required"></dxi-validation-rule>
+    </dxi-column>
+    <dxi-column dataField="producto_Cantidad">
+        <dxi-validation-rule type="required"></dxi-validation-rule>
+    </dxi-column>
+
+    <dxo-selection mode="single"></dxo-selection>
+    <dxo-editing
+        mode="popup"
+        [allowUpdating]="true"
+        [allowDeleting]="true"
+        [allowAdding]="true">
+    </dxo-editing>
+    <dxo-summary>
+      <dxi-group-item
+        summaryType="count">
+      </dxi-group-item>
+    </dxo-summary>
+    <dxo-filter-row [visible]="true"></dxo-filter-row>
+    <dxo-search-panel [visible]="true"></dxo-search-panel>
+</dx-data-grid>
